@@ -1,20 +1,42 @@
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
+import Header from '@/components/Header/Header';
+import Freelancer from '@/components/Freelancer/Freelancer';
+import Customer from '@/components/Customer/Customer';
+import Contract from '@/components/Contract/Contract';
+import Job from '@/components/Job/Job';
+import Proposal from '@/components/Proposal/Proposal';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
     return (
-        <div className="max-w-[1140px] mx-auto laptop:bg-red-500">
-            <div className="flex gap-6">
-                <div className="bg-white w-40 h-40"></div>
-                <div className="bg-white w-40 h-40"></div>
-                <div className="bg-white w-40 h-40"></div>
+        <div>
+            <Header></Header>
+            <div className="max-w-[1140px] mx-auto">
+                <Freelancer></Freelancer>
+                <Freelancer></Freelancer>
+                <Freelancer></Freelancer>
             </div>
-            <div className="grid grid-cols-3 w-fit gap-6">
-                <div className="bg-pink-400 w-40 h-40"></div>
-                <div className="bg-pink-400 w-40 h-40"></div>
-                <div className="bg-pink-400 w-40 h-40"></div>
+            <div className="max-w-[1140px] mx-auto">
+                <Customer></Customer>
+                <Customer></Customer>
+                <Customer></Customer>
+            </div>
+            <div className="max-w-[1140px] mx-auto py-5 border-b-2">
+                <Contract></Contract>
+                <Contract></Contract>
+                <Contract></Contract>
+            </div>
+            <div className="max-w-[1140px] mx-auto py-5 border-b-2">
+                <Job></Job>
+                <Job></Job>
+                <Job></Job>
+            </div>
+            <div className="max-w-[1140px] mx-auto py-5 border-b-2">
+                <Proposal></Proposal>
+                <Proposal></Proposal>
+                <Proposal></Proposal>
             </div>
         </div>
     );
