@@ -1,5 +1,7 @@
 import Header from '@/components/Header/Header';
 import React from 'react';
+import Image from 'next/image';
+import SignUpImage from '/public/assets/sign_up_img.jpg';
 
 export default function Login() {
     const [email, setEmail] = React.useState('');
@@ -21,7 +23,14 @@ export default function Login() {
         <div>
             <Header displaySearch={false} displayLogin={false} />
 
-            <div className="max-w-[1140px] mx-auto p-[100px]">
+            <div className="max-w-[1140px] mx-auto p-[100px] relative">
+                <Image
+                    src={SignUpImage}
+                    alt="Cartoon Man Image"
+                    width={200}
+                    height={200}
+                    className="absolute right-0 top-10 -rotate-[10deg] "
+                />
                 <div className="border-2 border-red-300 rounded-lg px-5 py-4 flex flex-col items-center">
                     <h1 className="text-center text-[40px] font-md mt-10">Log in to StuLance</h1>
                     <form

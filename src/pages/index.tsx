@@ -16,24 +16,22 @@ export default function Home() {
             <Header />
 
             <div className="max-w-[1140px] mx-auto">
-                <div className=" flex gap-5 justify-between items-center">
-                    <div className="flex flex-col gap-8 max-w-[60%]">
-                        <h2 className="text-[50px] text-red-500 font-bold">
+                <div className=" flex gap-5 justify-between items-center py-24">
+                    <div className="flex flex-col gap-8 max-w-[70%]">
+                        <h2 className="text-[60px] text-red-500 font-bold leading-[70px]">
                             Find the most suitable freelancers for your project.
                         </h2>
                         <p className="text-[28px] text-slate-600">
                             Throw out outdated guidelines. You could hire the top talent. Right now.
                         </p>
-                        <a href="#" className="bg-red-500 text-center rounded-full px-4 py-3">
-                            Get Started
-                        </a>
+                        <Link
+                            href="/signUp"
+                            className="w-[50%] rounded-full px-8 py-2  bg-red-500 text-white text-lg font-bold text-center border-2 border-transparent hover:bg-red-600 hover:border-2 hover:shadow-md"
+                        >
+                            Get Start
+                        </Link>
                     </div>
-                    <Image src={CarttonManImage} alt="Cartoon Man Image" width={200} height={200} />
-                </div>
-                <div className="max-w-[1140px] mx-auto py-5 border-b-2">
-                    <Job />
-                    <Job />
-                    <Job />
+                    <Image src={CarttonManImage} alt="Cartoon Man Image" width={400} height={400} />
                 </div>
                 <div>
                     <div>
@@ -47,6 +45,9 @@ export default function Home() {
                     </div>
                     <div>
                         <Link href="/proposals">Proposal</Link>
+                    </div>
+                    <div>
+                        <Link href="/jobs">Job</Link>
                     </div>
                 </div>
             </div>

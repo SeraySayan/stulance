@@ -1,5 +1,7 @@
 import Header from '@/components/Header/Header';
 import React from 'react';
+import Image from 'next/image';
+import SignUpImage from '/public/assets/sign_up_img.jpg';
 
 export default function SignUp() {
     const [email, setEmail] = React.useState('');
@@ -7,6 +9,7 @@ export default function SignUp() {
     const [name, setName] = React.useState('');
     const [surname, setSurname] = React.useState('');
     const [country, setCountry] = React.useState('');
+    const [confirmPassword, setConfirmPassword] = React.useState('');
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('submit');
@@ -26,14 +29,24 @@ export default function SignUp() {
     const handleCountryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCountry(e.target.value);
     };
+    const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setConfirmPassword(e.target.value);
+    };
     console.log('Email:' + email);
     console.log('Password:' + password);
 
     return (
         <div>
-            <Header displaySearch={false} displayLogin={false} />
+            <Header displaySearch={false} displaySignUp={false} />
 
-            <div className="max-w-[1140px] mx-auto p-[100px]">
+            <div className="max-w-[1140px] mx-auto p-[100px] relative">
+                <Image
+                    src={SignUpImage}
+                    alt="Cartoon Man Image"
+                    width={200}
+                    height={200}
+                    className="absolute right-0 top-10 -rotate-[10deg] "
+                />
                 <div className="border-2 border-red-300 rounded-lg px-5 py-4 flex flex-col items-center gap-8">
                     <h1 className="text-center text-[40px] font-md mt-10">Sign up to StuLance</h1>
                     <form
@@ -55,7 +68,7 @@ export default function SignUp() {
                             required
                             name="surname"
                             placeholder="Surname"
-                            value={name}
+                            value={surname}
                             onChange={handleSurnameChange}
                             className="px-3 py-2 border-2 border-red-300 rounded-lg"
                         />
@@ -85,6 +98,15 @@ export default function SignUp() {
                             placeholder="Password"
                             value={password}
                             onChange={handlePasswordChange}
+                            className="px-3 py-2 border-2 border-red-300 rounded-lg"
+                        />
+                        <input
+                            type="password"
+                            required
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
                             className="px-3 py-2 border-2 border-red-300 rounded-lg"
                         />
                         <select

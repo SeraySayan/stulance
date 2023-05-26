@@ -5,20 +5,21 @@ import Link from 'next/link';
 export default function Header({
     displaySearch = true,
     displayLogin = true,
+    displaySignUp = true,
 }: {
     displaySearch?: boolean;
     displayLogin?: boolean;
+    displaySignUp?: boolean;
 }) {
     return (
         <header className="border-b-2 border-red-500">
             <div className="px-10 py-5">
                 <div className="flex justify-between item-center">
                     <div className="flex gap-5 items-center">
-                        <Link href="/">
+                        <Link href="/" className="flex items-center gap-5">
                             <Image src={odtuLogo} width={100} height={100} alt="Picture of the logo" />
+                            <span className="font-bold text-2xl">StuLance</span>
                         </Link>
-
-                        <span className="font-bold text-2xl">StuLance</span>
                     </div>
                     <div className="flex gap-5 items-center">
                         {displaySearch ? (
@@ -47,14 +48,18 @@ export default function Header({
                             <></>
                         )}
 
-                        <div>
-                            <Link
-                                href="/signUp"
-                                className="inline-block w-[200px] rounded-full px-8 py-2  bg-red-500 text-white text-lg font-bold text-center border-2 border-transparent hover:bg-red-600 hover:border-2 hover:shadow-md"
-                            >
-                                Sign Up
-                            </Link>
-                        </div>
+                        {displaySignUp ? (
+                            <div>
+                                <Link
+                                    href="/signUp"
+                                    className="inline-block w-[200px] rounded-full px-8 py-2  bg-red-500 text-white text-lg font-bold text-center border-2 border-transparent hover:bg-red-600 hover:border-2 hover:shadow-md"
+                                >
+                                    Sign Up
+                                </Link>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
                     </div>
                 </div>
             </div>
