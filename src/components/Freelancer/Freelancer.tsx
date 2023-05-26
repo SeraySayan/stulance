@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import freelancerLogo from '/public/assets/business-people-icon.jpeg';
 import freelancerJobLogo from '/public/assets/freelancerJobIcon.png';
 export default function Freelancer() {
     return (
@@ -25,7 +24,7 @@ export default function Freelancer() {
                         </div>
                         <div>
                             <p>
-                                <b>88</b> Job Success
+                                <b>88</b> Job Done
                             </p>
                         </div>
                     </div>

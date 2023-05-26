@@ -1,17 +1,26 @@
 import Image from 'next/image';
-import contractLogo from '/public/assets/contractLogo.png';
+import ContractLogo from '/public/assets/contract_logo.png';
+import StarIcon from '/public/assets/star_icon.png';
 export default function Contract() {
     return (
-        <div className="flex flex-col gap-5 ">
+        <div className="flex flex-col gap-5">
             <h3 className="text-lg text-red-500 text-center">CONTRACT</h3>
             <div className="flex flex-col gap-5 items-start">
                 <div className="flex gap-8 justify-between">
-                    <Image src={contractLogo} alt="contractLogo" width={100} height={100} />
+                    <Image src={ContractLogo} alt="Contract Logo" width={150} height={50} />
                     <div className="flex flex-col gap-2">
                         <p>Contract Job 3</p>
                         <p>contract Proposal 1</p>
-                        <p>Contract Date : 24.06.2000</p>
-                        <p>Contract Due Date : 24.07.2000</p>
+                        <p>Contract Price : $100</p>
+                        <p>Contract Hours : 100</p>
+
+                        <p>
+                            Conract Date <time dateTime="2023-05-26">May 26, 2023</time>.
+                        </p>
+
+                        <p>
+                            Contract Due Date : <time dateTime="2023-06-26">June 26, 2023</time>
+                        </p>
                     </div>
                 </div>
                 <p>
@@ -19,11 +28,25 @@ export default function Contract() {
                     corrupti fugiat voluptas repellat neque at, i mpedit veritatis perferendis incidunt omnis! Ad
                     deleniti quod ea voluptatem.
                 </p>
-                <div className="felx flex-col gap-2 ">
+                <div className="flex flex-col gap-2">
                     <p>Customer Review : Lorem ipsum dolor sit amet.</p>
-                    <p>Customer Rate : ☆☆☆☆☆</p>
+                    <p className="flex items-center gap-3">
+                        Customer Rate :
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                    </p>
                     <p>Freelancer Review : Lorem ipsum dolor sit amet.</p>
-                    <p>Freelancers Rate : ☆☆☆☆☆</p>
+                    <p className="flex items-center gap-3">
+                        Freelancers Rate :{' '}
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                    </p>
                 </div>
             </div>
         </div>

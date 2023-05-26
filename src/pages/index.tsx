@@ -11,33 +11,33 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
     return (
-        <div>
-            <Header></Header>
+        <>
+            <Header />
             <div className="max-w-[1140px] mx-auto">
-                <Freelancer></Freelancer>
-                <Freelancer></Freelancer>
-                <Freelancer></Freelancer>
+                <Freelancer />
+                <Freelancer />
+                <Freelancer />
             </div>
             <div className="max-w-[1140px] mx-auto">
-                <Customer></Customer>
-                <Customer></Customer>
-                <Customer></Customer>
+                <Customer />
+                <Customer />
+                <Customer />
             </div>
             <div className="max-w-[1140px] mx-auto py-5 border-b-2">
-                <Contract></Contract>
-                <Contract></Contract>
-                <Contract></Contract>
+                <Contract />
+                <Contract />
+                <Contract />
             </div>
             <div className="max-w-[1140px] mx-auto py-5 border-b-2">
-                <Job></Job>
-                <Job></Job>
-                <Job></Job>
+                <Job />
+                <Job />
+                <Job />
             </div>
             <div className="max-w-[1140px] mx-auto py-5 border-b-2">
-                <Proposal></Proposal>
-                <Proposal></Proposal>
-                <Proposal></Proposal>
+                <Proposal />
+                <Proposal />
+                <Proposal />
             </div>
-        </div>
+        </>
     );
 }

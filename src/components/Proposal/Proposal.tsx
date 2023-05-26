@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import proposalLogo from '/public/assets/proposalLogo.png';
+import ProposalLogo from '/public/assets/proposal_logo.png';
 
 export default function Proposal() {
     return (
@@ -7,7 +7,7 @@ export default function Proposal() {
             <div className="flex flex-col gap-4 justify-between mb-5">
                 <h3 className=" text-red-400 text-center">PROPOSAL</h3>
                 <div className="flex gap-5">
-                    <Image src={proposalLogo} alt="Proposal  Logo Image" width={200} height={200} />
+                    <Image src={ProposalLogo} alt="Proposal Logo" width={200} height={200} />
                     <div className="flex flex-col gap-3">
                         <p>Job : 1</p>
                         <p>
@@ -22,7 +22,7 @@ export default function Proposal() {
                 </div>
                 <div className="text-center">
                     <a href="#" className=" text-center bg-yellow-300 py-2 px-3 rounded-full text-lg">
-                        Accept me
+                        Go Chat
                     </a>
                 </div>
             </div>
