@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import odtuLogo from '/public/assets/logoMetu.png';
+import OdtuLogo from '/public/assets/logo_metu.png';
 import Link from 'next/link';
 
 export default function Header({
@@ -17,12 +17,12 @@ export default function Header({
                 <div className="flex justify-between item-center">
                     <div className="flex gap-5 items-center">
                         <Link href="/" className="flex items-center gap-5">
-                            <Image src={odtuLogo} width={100} height={100} alt="Picture of the logo" />
+                            <Image src={OdtuLogo} width={100} height={100} alt="Picture of the logo" />
                             <span className="font-bold text-2xl">StuLance</span>
                         </Link>
                     </div>
                     <div className="flex gap-5 items-center">
-                        {displaySearch ? (
+                        {displaySearch && (
                             <div>
                                 <input
                                     type="text"
@@ -31,11 +31,9 @@ export default function Header({
                                     onChange={(e) => console.log(e.target.value)}
                                 />
                             </div>
-                        ) : (
-                            <></>
                         )}
 
-                        {displayLogin ? (
+                        {displayLogin && (
                             <div>
                                 <Link
                                     href="/login"
@@ -44,11 +42,9 @@ export default function Header({
                                     Log In
                                 </Link>
                             </div>
-                        ) : (
-                            <></>
                         )}
 
-                        {displaySignUp ? (
+                        {displaySignUp && (
                             <div>
                                 <Link
                                     href="/signUp"
@@ -57,8 +53,6 @@ export default function Header({
                                     Sign Up
                                 </Link>
                             </div>
-                        ) : (
-                            <></>
                         )}
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import JobLogo from '/public/assets/job_logo.png';
+import Link from 'next/link';
 export default function Job() {
     return (
         <div className="flex flex-col gap-4 justify-between mb-5">
@@ -21,9 +22,9 @@ export default function Job() {
                 </div>
             </div>
             <div className="text-center">
-                <a href="#" className=" text-center bg-yellow-300 py-2 px-3 rounded-full text-lg">
+                <Link href="#" className=" text-center bg-yellow-300 py-2 px-3 rounded-full text-lg">
                     Hired me
-                </a>
+                </Link>
             </div>
         </div>
     );

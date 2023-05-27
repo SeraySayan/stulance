@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import ContractLogo from '/public/assets/contract_logo.png';
-import StarIcon from '/public/assets/star_icon.png';
+import StarRating from '../StarRating/StarRating';
 export default function Contract() {
     return (
         <div className="flex flex-col gap-5">
@@ -31,21 +31,11 @@ export default function Contract() {
                 <div className="flex flex-col gap-2">
                     <p>Customer Review : Lorem ipsum dolor sit amet.</p>
                     <p className="flex items-center gap-3">
-                        Customer Rate :
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        Customer Rate : <StarRating rating={5} />
                     </p>
                     <p>Freelancer Review : Lorem ipsum dolor sit amet.</p>
                     <p className="flex items-center gap-3">
-                        Freelancers Rate :{' '}
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
-                        <Image src={StarIcon} alt="Rating Star Icon" height={20} width={20} className="inline" />
+                        <StarRating rating={6} />
                     </p>
                 </div>
             </div>
