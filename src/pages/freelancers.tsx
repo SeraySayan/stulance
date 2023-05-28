@@ -1,14 +1,15 @@
 import Freelancer from '@/components/Freelancer/Freelancer';
 import Header from '@/components/Header/Header';
+import Container from '@/components/Container/Container';
 export default function Freelancers() {
     return (
         <div>
             <Header />
-            <div className="max-w-[1140px] mx-auto">
-                <Freelancer />
-                <Freelancer />
-                <Freelancer />
-            </div>
+            <Container>
+                <Freelancer name="Seray" surname="Sayan" country="Turkey" skills={['JavaScript', 'C#']} />
+                <Freelancer name="Seray" surname="Sayan" country="Turkey" skills={['JavaScript', 'C#']} />
+                <Freelancer name="Seray" surname="Sayan" country="Turkey" skills={['JavaScript', 'C#']} />
+            </Container>
         </div>
     );
 }

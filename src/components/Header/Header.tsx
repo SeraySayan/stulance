@@ -2,15 +2,23 @@ import Image from 'next/image';
 import OdtuLogo from '/public/assets/logo_metu.png';
 import Link from 'next/link';
 
+interface HeaderProps {
+    display?: {
+        search?: boolean;
+        login?: boolean;
+        signUp?: boolean;
+    };
+}
+
 export default function Header({
-    displaySearch = true,
-    displayLogin = true,
-    displaySignUp = true,
-}: {
-    displaySearch?: boolean;
-    displayLogin?: boolean;
-    displaySignUp?: boolean;
-}) {
+    display = {
+        search: true,
+        login: true,
+        signUp: true,
+    },
+}: HeaderProps) {
+    const { search = true, login = true, signUp = true } = display;
+
     return (
         <header className="border-b-2 border-red-500">
             <div className="px-10 py-5">
@@ -22,7 +30,7 @@ export default function Header({
                         </Link>
                     </div>
                     <div className="flex gap-5 items-center">
-                        {displaySearch && (
+                        {search && (
                             <div>
                                 <input
                                     type="text"
@@ -33,7 +41,7 @@ export default function Header({
                             </div>
                         )}
 
-                        {displayLogin && (
+                        {login && (
                             <div>
                                 <Link
                                     href="/login"
@@ -44,7 +52,7 @@ export default function Header({
                             </div>
                         )}
 
-                        {displaySignUp && (
+                        {signUp && (
                             <div>
                                 <Link
                                     href="/signUp"

@@ -1,12 +1,9 @@
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header/Header';
-import Customer from '@/components/Customer/Customer';
-import Contract from '@/components/Contract/Contract';
-import Job from '@/components/Job/Job';
-import Proposal from '@/components/Proposal/Proposal';
 import Image from 'next/image';
 import CarttonManImage from '/public/assets/landing_page_img.jpg';
 import Link from 'next/link';
+import Container from '@/components/Container/Container';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,9 +11,8 @@ export default function Home() {
     return (
         <>
             <Header />
-
-            <div className="max-w-[1140px] mx-auto">
-                <div className=" flex gap-5 justify-between items-center py-24">
+            <Container>
+                <div className=" flex gap-5 justify-between items-center ">
                     <div className="flex flex-col gap-8 max-w-[70%]">
                         <h2 className="text-[60px] text-red-500 font-bold leading-[70px]">
                             Find the most suitable freelancers for your project.
@@ -50,7 +46,7 @@ export default function Home() {
                         <Link href="/jobs">Job</Link>
                     </div>
                 </div>
-            </div>
+            </Container>
         </>
     );
 }

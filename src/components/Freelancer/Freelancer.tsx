@@ -1,6 +1,16 @@
 import Image from 'next/image';
 import freelancerJobLogo from '/public/assets/freelancerJobIcon.png';
-export default function Freelancer() {
+export default function Freelancer({
+    name,
+    surname,
+    country,
+    skills,
+}: {
+    name: string;
+    surname: string;
+    country: string;
+    skills: string[];
+}) {
     return (
         <div className="border-b-2 ">
             <div className="px-20 py-10">
@@ -17,22 +27,20 @@ export default function Freelancer() {
                     <div className="flex gap-4 flex-col max-w-[35%]">
                         <div className="flex gap-6">
                             <div>
-                                <p>Seray Sayan</p>
-                                <p>Web Developer</p>
-                                <p>Turkey</p>
+                                <p>
+                                    {name} {surname}
+                                </p>
+                                <p>{country}</p>
                             </div>
-                        </div>
-                        <div>
-                            <p>
-                                <b>88</b> Job Done
-                            </p>
                         </div>
                     </div>
                     <div>
                         <ul className="flex gap-1 max-w-[35%]">
-                            <li className="px-3 py-2 bg-red-300 rounded-lg text-center  ">Javascript</li>
-                            <li className="px-3 py-2 bg-red-300 rounded-lg text-center ">C#</li>
-                            <li className="px-3 py-2 bg-red-300 rounded-lg text-center ">Web Development</li>
+                            {skills.map((skill) => (
+                                <li key={skill} className="px-3 py-2 bg-red-300 rounded-lg text-center ">
+                                    {skill}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

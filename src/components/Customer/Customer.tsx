@@ -1,6 +1,16 @@
 import Image from 'next/image';
 import CustomerIconLogo from '/public/assets/customer_icon.png';
-export default function Customer() {
+export default function Customer({
+    name,
+    surname,
+    country,
+    jobDone,
+}: {
+    name: string;
+    surname: string;
+    country: string;
+    jobDone: number;
+}) {
     return (
         <div className="border-b-2">
             <div className="px-20 py-10">
@@ -10,14 +20,15 @@ export default function Customer() {
                     </div>
                     <div>
                         <div className="flex flex-col gap-2">
-                            <p>Dogu Cagri Ozarpaci</p>
-                            <p>Web Developer</p>
-                            <p>Spain</p>
+                            <p>
+                                {name} {surname}
+                            </p>
+                            <p>{country}</p>
                         </div>
                     </div>
                     <div>
                         <p>
-                            <b>100</b> Job Done
+                            <b>{jobDone}</b> Job Done
                         </p>
                     </div>
                 </div>

@@ -1,7 +1,29 @@
 import Image from 'next/image';
 import ContractLogo from '/public/assets/contract_logo.png';
 import StarRating from '../StarRating/StarRating';
-export default function Contract() {
+export default function Contract({
+    jobID,
+    proposalID,
+    price,
+    startDate,
+    dueDate,
+    agreementText,
+    customerReview,
+    customerRating,
+    freelancerReview,
+    freelancerRating,
+}: {
+    jobID: number;
+    proposalID: number;
+    price: number;
+    startDate: string;
+    dueDate: string;
+    agreementText: string;
+    customerReview: string;
+    customerRating: number;
+    freelancerReview: string;
+    freelancerRating: number;
+}) {
     return (
         <div className="flex flex-col gap-5">
             <h3 className="text-lg text-red-500 text-center">CONTRACT</h3>
@@ -9,33 +31,28 @@ export default function Contract() {
                 <div className="flex gap-8 justify-between">
                     <Image src={ContractLogo} alt="Contract Logo" width={150} height={50} />
                     <div className="flex flex-col gap-2">
-                        <p>Contract Job 3</p>
-                        <p>contract Proposal 1</p>
-                        <p>Contract Price : $100</p>
-                        <p>Contract Hours : 100</p>
+                        <p>Contract Job {jobID}</p>
+                        <p>contract Proposal {proposalID}</p>
+                        <p>Contract Price : ${price}</p>
 
                         <p>
-                            Conract Date <time dateTime="2023-05-26">May 26, 2023</time>.
+                            Conract Start Date <time dateTime={startDate}>{startDate}</time>.
                         </p>
 
                         <p>
-                            Contract Due Date : <time dateTime="2023-06-26">June 26, 2023</time>
+                            Contract Due Date : <time dateTime={dueDate}>{dueDate}</time>
                         </p>
                     </div>
                 </div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi excepturi, autem facere porro unde
-                    corrupti fugiat voluptas repellat neque at, i mpedit veritatis perferendis incidunt omnis! Ad
-                    deleniti quod ea voluptatem.
-                </p>
+                <p>{agreementText}</p>
                 <div className="flex flex-col gap-2">
-                    <p>Customer Review : Lorem ipsum dolor sit amet.</p>
+                    <p>Customer Review : {customerReview}</p>
                     <p className="flex items-center gap-3">
-                        Customer Rate : <StarRating rating={5} />
+                        Customer Rate : <StarRating rating={customerRating} />
                     </p>
-                    <p>Freelancer Review : Lorem ipsum dolor sit amet.</p>
+                    <p>Freelancer Review : {freelancerReview}</p>
                     <p className="flex items-center gap-3">
-                        <StarRating rating={6} />
+                        <StarRating rating={freelancerRating} />
                     </p>
                 </div>
             </div>

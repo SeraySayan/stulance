@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import ProposalLogo from '/public/assets/proposal_logo.png';
 
-export default function Proposal() {
+export default function Proposal({ jobID, text, price }: { jobID: number; text: string; price: number }) {
     return (
         <div>
             <div className="flex flex-col gap-4 justify-between mb-5">
@@ -9,14 +9,10 @@ export default function Proposal() {
                 <div className="flex gap-5">
                     <Image src={ProposalLogo} alt="Proposal Logo" width={200} height={200} />
                     <div className="flex flex-col gap-3">
-                        <p>Job : 1</p>
+                        <p>Job : {jobID}</p>
+                        <p>{text}</p>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis impedit sint ullam nihil
-                            accusamus quod, voluptates ab, ea laborum soluta dolores quos ut harum. Vitae perspiciatis
-                            quod in sapiente eligendi.
-                        </p>
-                        <p>
-                            $<b>65</b>hours
+                            $<b>{price}</b>hours
                         </p>
                     </div>
                 </div>
