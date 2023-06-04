@@ -1,10 +1,10 @@
 import Contract from '@/components/Contract/Contract';
-import Header from '@/components/Header/Header';
 import Container from '@/components/Container/Container';
+import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
 export default function Contracts() {
     return (
         <div>
-            <Header />
+            <HeaderLoggedIn />
             <Container>
                 <Contract
                     jobID={1}

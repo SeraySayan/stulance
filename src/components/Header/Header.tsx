@@ -55,7 +55,7 @@ export default function Header({
                         {signUp && (
                             <div>
                                 <Link
-                                    href="/signUp"
+                                    href="/signup"
                                     className="inline-block w-[200px] rounded-full px-8 py-2  bg-red-500 text-white text-lg font-bold text-center border-2 border-transparent hover:bg-red-600 hover:border-2 hover:shadow-md"
                                 >
                                     Sign Up

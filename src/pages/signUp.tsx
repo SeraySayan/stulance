@@ -32,6 +32,10 @@ export default function SignUp() {
     const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setConfirmPassword(e.target.value);
     };
+    function validateForm() {
+        return password === confirmPassword;
+    }
+
     console.log('Email:' + email);
     console.log('Password:' + password);
 

@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import SignUpImage from '/public/assets/sign_up_img.jpg';
 import Container from '@/components/Container/Container';
+import axios from 'axios';
 
 export default function Login() {
     const [email, setEmail] = React.useState('');
@@ -10,6 +11,10 @@ export default function Login() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('submit');
+        axios.post('http://localhost:8000/login', {
+            email: email,
+            password: password,
+        });
     };
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
