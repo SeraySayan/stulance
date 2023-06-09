@@ -1,7 +1,23 @@
 import Image from 'next/image';
 import ProposalLogo from '/public/assets/proposal_logo.png';
 
-export default function Proposal({ jobID, text, price }: { jobID: number; text: string; price: number }) {
+export default function Proposal({
+    jobID,
+    jobName,
+    text,
+    price,
+    freelancer,
+    proposalDate,
+}: {
+    jobID: number;
+    jobName: string;
+    text: string;
+    price: number;
+    freelancer: string;
+    proposalDate: string;
+}) {
+    const date = new Date(proposalDate);
+    proposalDate = date.toLocaleDateString();
     return (
         <div>
             <div className="flex flex-col gap-4 justify-between mb-5">
@@ -9,11 +25,15 @@ export default function Proposal({ jobID, text, price }: { jobID: number; text: 
                 <div className="flex gap-5">
                     <Image src={ProposalLogo} alt="Proposal Logo" width={200} height={200} />
                     <div className="flex flex-col gap-3">
-                        <p>Job : {jobID}</p>
-                        <p>{text}</p>
+                        <p>Job : {jobName}</p>
+                        <p>Proposal Description: {text}</p>
                         <p>
-                            $<b>{price}</b>hours
+                            Proposal Bid: $<b>{price}</b>hours
                         </p>
+                        <p>
+                            Proposal Date: <time dateTime={proposalDate}>{proposalDate}</time>
+                        </p>
+                        <p>Freelancer : {freelancer.toUpperCase()}</p>
                     </div>
                 </div>
                 <div className="text-center">

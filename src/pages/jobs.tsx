@@ -2,25 +2,32 @@ import Job from '@/components/Job/Job';
 import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
 import Container from '@/components/Container/Container';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 export default function Jobs() {
-    axios
-        .get('http://localhost:8000/jobs')
-        .then(function (response) {
-            // Request successful, handle the response data
-            console.log(response.data);
-            console.log(response.data[0].job_title);
-        })
-        .catch(function (error) {
-            // An error occurred, handle the error
-            console.log(error);
+    const [jobs, setJobs] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:8000/jobs').then((res) => {
+            setJobs(res.data);
+            console.log(res.data);
         });
+    }, []);
+
     return (
         <div>
             <HeaderLoggedIn />
             <Container>
-                <Job jobDate="Jun 24, 2023" jobTitle="JOB" description="seray sayan job" price={50} />
-                <Job jobDate="Jun 24, 2023" jobTitle="JOB" description="seray sayan job" price={50} />
-                <Job jobDate="Jun 24, 2023" jobTitle="JOB" description="seray sayan job" price={50} />
+                {jobs &&
+                    jobs.map((job: any) => (
+                        <Job
+                            key={job.job_id}
+                            jobDate={job.created_at}
+                            customer={job.name + ' ' + job.surname}
+                            description={job.job_description}
+                            price={job.job_price}
+                            jobTitle={job.job_title}
+                            cta={{ text: 'Apply', href: '#' }}
+                        />
+                    ))}
             </Container>
         </div>
     );

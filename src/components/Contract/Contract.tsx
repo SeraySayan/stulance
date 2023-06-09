@@ -4,14 +4,15 @@ import StarRating from '../StarRating/StarRating';
 export default function Contract({
     jobID,
     proposalID,
-    price,
-    startDate,
-    dueDate,
-    agreementText,
     customerReview,
     customerRating,
     freelancerReview,
     freelancerRating,
+    startDate,
+    dueDate,
+    agreementText,
+    price,
+    freelancer,
 }: {
     jobID: number;
     proposalID: number;
@@ -23,7 +24,12 @@ export default function Contract({
     customerRating: number;
     freelancerReview: string;
     freelancerRating: number;
+    freelancer: string;
 }) {
+    const date = new Date(startDate);
+    startDate = date.toLocaleDateString();
+    const date2 = new Date(dueDate);
+    dueDate = date2.toLocaleDateString();
     return (
         <div className="flex flex-col gap-5">
             <h3 className="text-lg text-red-500 text-center">CONTRACT</h3>
@@ -32,7 +38,9 @@ export default function Contract({
                     <Image src={ContractLogo} alt="Contract Logo" width={150} height={50} />
                     <div className="flex flex-col gap-2">
                         <p>Contract Job {jobID}</p>
-                        <p>contract Proposal {proposalID}</p>
+                        <p>
+                            Contract Proposal by <b>{freelancer.toUpperCase()}</b>
+                        </p>
                         <p>Contract Price : ${price}</p>
 
                         <p>
@@ -44,7 +52,11 @@ export default function Contract({
                         </p>
                     </div>
                 </div>
-                <p>{agreementText}</p>
+                <p>
+                    <b>
+                        <i>{agreementText}</i>
+                    </b>
+                </p>
                 <div className="flex flex-col gap-2">
                     <p>Customer Review : {customerReview}</p>
                     <p className="flex items-center gap-3">
@@ -52,7 +64,7 @@ export default function Contract({
                     </p>
                     <p>Freelancer Review : {freelancerReview}</p>
                     <p className="flex items-center gap-3">
-                        <StarRating rating={freelancerRating} />
+                        Freelancer Rate : <StarRating rating={freelancerRating} />
                     </p>
                 </div>
             </div>

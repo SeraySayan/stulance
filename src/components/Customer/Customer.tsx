@@ -5,11 +5,13 @@ export default function Customer({
     surname,
     country,
     jobDone,
+    mail,
 }: {
     name: string;
     surname: string;
     country: string;
     jobDone: number;
+    mail: string;
 }) {
     return (
         <div className="border-b-2">
@@ -24,6 +26,7 @@ export default function Customer({
                                 {name} {surname}
                             </p>
                             <p>{country}</p>
+                            <p>{mail}</p>
                         </div>
                     </div>
                     <div>

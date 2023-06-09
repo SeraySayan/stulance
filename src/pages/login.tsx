@@ -4,18 +4,17 @@ import Image from 'next/image';
 import SignUpImage from '/public/assets/sign_up_img.jpg';
 import Container from '@/components/Container/Container';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function Login() {
+    const router = useRouter();
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log('submit');
-        axios.post('http://localhost:8000/login', {
-            email: email,
-            password: password,
-        });
-    };
+
+    const { accessToken, setAccessToken } = useAuth();
+    const { userType, setUserType } = useAuth();
+
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     };
@@ -24,6 +23,30 @@ export default function Login() {
     };
     console.log('Email:' + email);
     console.log('Password:' + password);
+    console.log('Token:' + accessToken);
+    console.log('UserType:' + userType);
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log('submit');
+        axios
+            .post('http://localhost:8000/login', {
+                email: email,
+                password: password,
+            })
+            .then((res) => {
+                console.log(res);
+                console.log(res.data);
+                setAccessToken(res.data.token);
+                setUserType(res.data.userType);
+                router.push('/profile');
+            })
+            .catch((err) => {
+                console.log(err);
+                console.log('hata');
+                window.alert('Email or password is wrong!');
+            });
+    };
 
     return (
         <>

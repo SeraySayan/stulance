@@ -1,47 +1,38 @@
 import Contract from '@/components/Contract/Contract';
 import Container from '@/components/Container/Container';
 import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 export default function Contracts() {
+    const [contracts, setContracts] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:8000/mycontracts').then((res) => {
+            setContracts(res.data);
+            console.log(res.data);
+        });
+    }, []);
+
     return (
         <div>
             <HeaderLoggedIn />
             <Container>
-                <Contract
-                    jobID={1}
-                    proposalID={2}
-                    price={50}
-                    startDate="June 24, 2023"
-                    dueDate="July 24, 2023"
-                    agreementText="Converting figma design into HTML"
-                    customerReview="Good"
-                    customerRating={4}
-                    freelancerReview="Good"
-                    freelancerRating={4}
-                />
-                <Contract
-                    jobID={1}
-                    proposalID={2}
-                    price={50}
-                    startDate="June 24, 2023"
-                    dueDate="July 24, 2023"
-                    agreementText="Converting figma design into HTML"
-                    customerReview="Good"
-                    customerRating={4}
-                    freelancerReview="Good"
-                    freelancerRating={4}
-                />
-                <Contract
-                    jobID={1}
-                    proposalID={2}
-                    price={50}
-                    startDate="June 24, 2023"
-                    dueDate="July 24, 2023"
-                    agreementText="Converting figma design into HTML"
-                    customerReview="Good"
-                    customerRating={4}
-                    freelancerReview="Good"
-                    freelancerRating={4}
-                />
+                {contracts &&
+                    contracts.map((contract: any) => (
+                        <Contract
+                            key={contract.contract_id}
+                            jobID={contract.job_id}
+                            proposalID={contract.proposal_id}
+                            price={contract.proposal_bid}
+                            startDate={contract.start_date}
+                            dueDate={contract.due_date}
+                            agreementText={contract.agreement_text}
+                            customerReview={contract.customer_review}
+                            customerRating={contract.customer_rating}
+                            freelancerReview={contract.freelancer_review}
+                            freelancerRating={contract.freelancer_rating}
+                            freelancer={contract.name + ' ' + contract.surname}
+                        />
+                    ))}
             </Container>
         </div>
     );

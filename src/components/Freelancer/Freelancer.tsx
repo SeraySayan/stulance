@@ -1,14 +1,17 @@
 import Image from 'next/image';
 import freelancerJobLogo from '/public/assets/freelancerJobIcon.png';
+import { useState } from 'react';
 export default function Freelancer({
     name,
     surname,
     country,
+    mail,
     skills,
 }: {
     name: string;
     surname: string;
     country: string;
+    mail: string;
     skills: string[];
 }) {
     return (
@@ -31,6 +34,7 @@ export default function Freelancer({
                                     {name} {surname}
                                 </p>
                                 <p>{country}</p>
+                                <p>{mail}</p>
                             </div>
                         </div>
                     </div>
