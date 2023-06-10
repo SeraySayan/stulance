@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function HeaderLoggedIn() {
     const { userType, setUserType, accessToken, setAccessToken } = useAuth();
     console.log('UserType:' + userType);
+    console.log('AccessToken:' + accessToken);
 
     const handleClick = () => {
         axios.post('http://localhost:8000/logout').then((res) => {
@@ -29,9 +30,9 @@ export default function HeaderLoggedIn() {
                         <Link href="/customers">Customers</Link>
                         <Link href="/freelancers">Freelancers</Link>
                         <Link href="/jobs">Jobs</Link>
-                        {userType === 'customer' && <Link href="/myJobs">MyJobs</Link>}
+                        {userType === 'customer' && <Link href="/myjobs">MyJobs</Link>}
                         <Link href="/contracts">MyContracts</Link>
-                        {userType === 'freelancer' && <Link href="/proposals">Proposals</Link>}
+                        {userType === 'freelancer' && <Link href="/myproposals">MyProposals</Link>}
                         <Link href="/" onClick={handleClick}>
                             Log Out
                         </Link>

@@ -3,12 +3,16 @@ import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
 import Container from '@/components/Container/Container';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+
 export default function Jobs() {
     const [jobs, setJobs] = useState([]);
+    const { userType } = useAuth();
     useEffect(() => {
         axios.get('http://localhost:8000/jobs').then((res) => {
             setJobs(res.data);
             console.log(res.data);
+            console.log('seray' + userType);
         });
     }, []);
 
@@ -25,7 +29,7 @@ export default function Jobs() {
                             description={job.job_description}
                             price={job.job_price}
                             jobTitle={job.job_title}
-                            cta={{ text: 'Apply', href: '#' }}
+                            cta={{ text: 'Apply', href: `/sendproposal/${job.job_id}` }}
                         />
                     ))}
             </Container>

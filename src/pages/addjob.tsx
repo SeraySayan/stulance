@@ -2,11 +2,12 @@ import React from 'react';
 import Container from '@/components/Container/Container';
 import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
 import axios from 'axios';
+import { useAuth } from '@/contexts/AuthContext';
 export default function AddJob() {
     const [jobTitle, setJobTitle] = React.useState('');
     const [jobDescription, setJobDescription] = React.useState('');
     const [jobPrice, setJobPrice] = React.useState('');
-
+    const { accessToken, setAccessToken } = useAuth();
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('submit');
@@ -31,7 +32,11 @@ export default function AddJob() {
         };
 
         axios
-            .post('http://localhost:8000/job', jobData)
+            .post('http://localhost:8000/job', jobData, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            })
             .then((response) => {
                 // Handle successful response
                 console.log(response.data);

@@ -3,13 +3,21 @@ import Container from '@/components/Container/Container';
 import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 export default function Contracts() {
     const [contracts, setContracts] = useState([]);
+    const { accessToken } = useAuth();
     useEffect(() => {
-        axios.get('http://localhost:8000/mycontracts').then((res) => {
-            setContracts(res.data);
-            console.log(res.data);
-        });
+        axios
+            .get('http://localhost:8000/mycontracts', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            })
+            .then((res) => {
+                setContracts(res.data);
+                console.log(res.data);
+            });
     }, []);
 
     return (
@@ -33,6 +41,7 @@ export default function Contracts() {
                             freelancer={contract.name + ' ' + contract.surname}
                         />
                     ))}
+                {contracts.length === 0 && <h1 className="text-center mb-40 text-[36px]">No contracts</h1>}
             </Container>
         </div>
     );
