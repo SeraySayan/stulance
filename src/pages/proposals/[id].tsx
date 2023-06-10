@@ -4,20 +4,27 @@ import axios from 'axios';
 import Proposal from '@/components/Proposal/Proposal';
 import Container from '@/components/Container/Container';
 import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function JobProposal() {
     const router = useRouter();
     const { id } = router.query;
     const [proposals, setProposals] = useState([]);
-
+    const { accessToken, setAccessToken } = useAuth();
     useEffect(() => {
         if (id) {
-            axios.get(`http://localhost:8000/proposal/${id}`).then((res) => {
-                console.log(id);
-                console.log('data', res.data);
-                setProposals(res.data);
-                console.log(res.data);
-            });
+            axios
+                .get(`http://localhost:8000/proposal/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then((res) => {
+                    console.log(id);
+                    console.log('data', res.data);
+                    setProposals(res.data);
+                    console.log(res.data);
+                });
         }
     }, [id]);
 

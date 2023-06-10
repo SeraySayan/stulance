@@ -4,13 +4,21 @@ import Job from '@/components/Job/Job';
 import HeaderLoggedIn from '@/components/HeaderLoggedIn/HeaderLoggedIn';
 import Container from '@/components/Container/Container';
 import Link from 'next/link';
+import { useAuth } from '@/contexts/AuthContext';
 export default function MyJobs() {
     const [jobs, setJobs] = useState([]);
+    const { accessToken } = useAuth();
     useEffect(() => {
-        axios.get('http://localhost:8000/myjobs').then((res) => {
-            setJobs(res.data);
-            console.log(res.data);
-        });
+        axios
+            .get('http://localhost:8000/myjobs', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            })
+            .then((res) => {
+                setJobs(res.data);
+                console.log(res.data);
+            });
     }, []);
 
     return (
